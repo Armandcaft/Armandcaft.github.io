@@ -1,852 +1,460 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christian Tchuente — Software Engineer (.NET / C#)</title>
+<meta name="description" content="Backend-leaning software engineer specializing in .NET/C# and microservices. Portfolio of Christian Tchuente — open to international relocation.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%236D5EF6'/%3E%3Ctext x='16' y='22' font-size='17' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0D12; --surface:#12151C; --surface-2:#161B24; --border:#1E232E;
+  --text:#E6E8EC; --muted:#98A0AD; --accent:#6D5EF6; --accent-2:#22D3EE;
+  --radius:16px; --maxw:1080px;
+  --f-head:'Space Grotesk',system-ui,sans-serif;
+  --f-body:'Inter',system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:var(--f-body); font-size:16px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(900px 500px at 82% -8%, rgba(109,94,246,.18), transparent 60%),
+                   radial-gradient(700px 500px at -5% 8%, rgba(34,211,238,.10), transparent 55%);
+  background-attachment:fixed;
+}
+a{color:inherit; text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+.mono{font-family:var(--f-mono)}
+.accent{color:var(--accent)}
 
-    <head>
-        <meta charset="utf-8">
-        <title>GIZ DevStand - GIZ DevStand Website Template</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Free HTML Templates" name="keywords">
-        <meta content="Free HTML Templates" name="description">
+/* header */
+header{position:sticky; top:0; z-index:50; backdrop-filter:blur(12px);
+  background:rgba(11,13,18,.72); border-bottom:1px solid var(--border)}
+.nav{display:flex; align-items:center; justify-content:space-between; height:62px}
+.brand{font-family:var(--f-mono); font-weight:500; letter-spacing:.02em; font-size:.95rem}
+.brand b{color:var(--accent)}
+.nav-links{display:flex; gap:26px; align-items:center}
+.nav-links a{color:var(--muted); font-size:.9rem; transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.langsw{display:flex; gap:2px; border:1px solid var(--border); border-radius:999px; padding:3px; background:var(--surface)}
+.langsw button{all:unset; cursor:pointer; font-family:var(--f-mono); font-size:.72rem; letter-spacing:.05em;
+  color:var(--muted); padding:4px 10px; border-radius:999px; transition:.2s}
+.langsw button[aria-pressed="true"]{background:var(--accent); color:#fff}
+.menu-toggle{display:none}
 
-        <!-- Favicon -->
-        <link href="logo GIZ.jpg" rel="icon">
+/* buttons */
+.btn{display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:.92rem;
+  padding:11px 20px; border-radius:999px; border:1px solid var(--border); transition:.22s; cursor:pointer}
+.btn.primary{background:linear-gradient(100deg,var(--accent),#8b7cff); border-color:transparent; color:#fff;
+  box-shadow:0 6px 24px -8px rgba(109,94,246,.7)}
+.btn.primary:hover{transform:translateY(-2px); box-shadow:0 12px 30px -8px rgba(109,94,246,.85)}
+.btn.ghost:hover{border-color:var(--accent); color:#fff; transform:translateY(-2px)}
 
-        <!-- Google Web Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/googlefont.css">
+/* sections */
+section{padding:76px 0}
+.eyebrow{font-family:var(--f-mono); font-size:.76rem; letter-spacing:.18em; text-transform:uppercase; color:var(--accent)}
+h1,h2,h3{font-family:var(--f-head); line-height:1.15; margin:0}
+h2.sec{font-size:clamp(1.5rem,3vw,2rem); margin:10px 0 6px}
+.sec-sub{color:var(--muted); margin:0 0 34px}
 
-        <!-- Icon Font Stylesheet -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/fontajax.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/bootstrapicon.css">
+/* hero */
+.hero{padding:74px 0 40px}
+.hero .eyebrow{margin-bottom:18px}
+.hero h1{font-size:clamp(2.1rem,6vw,3.7rem); font-weight:700; letter-spacing:-.02em}
+.hero h1 .grad{background:linear-gradient(100deg,var(--accent) 10%,var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.hero .role{font-family:var(--f-mono); color:var(--muted); font-size:clamp(.85rem,2.2vw,1rem); margin:16px 0 22px}
+.hero .value{font-size:clamp(1.02rem,2.3vw,1.22rem); max-width:660px; color:#CFD3DA}
+.hero .loc{display:inline-flex; align-items:center; gap:9px; margin-top:22px; color:var(--muted); font-size:.92rem}
+.dot{width:8px; height:8px; border-radius:50%; background:var(--accent-2); box-shadow:0 0 10px var(--accent-2)}
+.cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:30px}
 
-        <!-- Libraries Stylesheet -->
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link href="lib/animate/animate.min.css" rel="stylesheet">
+/* skills */
+.skill-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
+.skill-cat h3{font-size:.82rem; font-family:var(--f-mono); color:var(--muted); text-transform:uppercase; letter-spacing:.1em; margin-bottom:12px; font-weight:500}
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.chip{font-family:var(--f-mono); font-size:.78rem; color:#C9CDD6; background:var(--surface);
+  border:1px solid var(--border); border-radius:8px; padding:6px 11px}
+.chip:hover{border-color:var(--accent); color:#fff}
 
-        <!-- Customized Bootstrap Stylesheet -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+/* projects */
+.proj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+.card{background:linear-gradient(180deg,var(--surface),var(--surface-2)); border:1px solid var(--border);
+  border-radius:var(--radius); padding:26px; transition:.25s; position:relative; overflow:hidden}
+.card:hover{transform:translateY(-5px); border-color:rgba(109,94,246,.55); box-shadow:0 22px 50px -24px rgba(109,94,246,.6)}
+.card.lead{grid-column:1 / -1; background:
+  radial-gradient(600px 200px at 100% 0%, rgba(109,94,246,.12), transparent 60%), linear-gradient(180deg,var(--surface),var(--surface-2))}
+.card h3{font-size:1.28rem; display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.tag{color:var(--muted); font-size:.92rem; margin:6px 0 16px}
+.pt{display:block; font-family:var(--f-mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:3px}
+.pblock{margin-bottom:13px}
+.pblock p{margin:0; font-size:.94rem; color:#CBD0D8}
+.stack{display:flex; flex-wrap:wrap; gap:6px; margin:16px 0 4px}
+.stack .chip{font-size:.72rem; padding:4px 9px}
+.plinks{margin-top:16px; display:flex; gap:16px; align-items:center; flex-wrap:wrap}
+.plink{font-family:var(--f-mono); font-size:.82rem; color:var(--accent); border-bottom:1px solid transparent; transition:.2s}
+.plink:hover{border-color:var(--accent)}
+.plink.muted{color:var(--muted); cursor:default}
+.badge-lead{font-family:var(--f-mono); font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--accent-2); border:1px solid rgba(34,211,238,.4); border-radius:999px; padding:2px 9px}
 
-        <!-- Template Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
-    </head>
+/* learning */
+.learn{margin-top:20px; background:var(--surface); border:1px dashed var(--border); border-radius:var(--radius);
+  padding:20px 24px; display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap}
+.learn .txt{flex:1; min-width:260px}
+.learn h3{font-size:1rem; margin-bottom:6px}
+.learn p{margin:0; color:var(--muted); font-size:.9rem}
 
-    <body>
-        
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner"></div>
+/* timeline */
+.tl{border-left:2px solid var(--border); margin-left:6px; padding-left:0}
+.tl li{list-style:none; position:relative; padding:0 0 26px 26px}
+.tl li::before{content:""; position:absolute; left:-7px; top:5px; width:12px; height:12px; border-radius:50%;
+  background:var(--bg); border:2px solid var(--accent)}
+.tl .role{font-weight:600; font-family:var(--f-head)}
+.tl .date{font-family:var(--f-mono); font-size:.76rem; color:var(--accent); margin:2px 0 6px}
+.tl .desc{color:var(--muted); font-size:.92rem}
+.exp-cta{margin-top:6px}
+
+/* contact */
+.contact-card{background:linear-gradient(120deg,rgba(109,94,246,.12),rgba(34,211,238,.06)); border:1px solid var(--border);
+  border-radius:22px; padding:44px; text-align:center}
+.contact-card h2{font-size:clamp(1.6rem,4vw,2.3rem)}
+.contact-card p{color:#CBD0D8; max-width:520px; margin:12px auto 26px}
+.socials{display:flex; gap:22px; justify-content:center; flex-wrap:wrap; margin-top:26px; font-family:var(--f-mono); font-size:.85rem}
+.socials a{color:var(--muted)} .socials a:hover{color:var(--text)}
+
+/* footer */
+footer{border-top:1px solid var(--border); padding:26px 0; color:var(--muted); font-size:.82rem}
+.foot{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; font-family:var(--f-mono)}
+
+/* reveal */
+.reveal{opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease}
+.reveal.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1; transform:none; transition:none} html{scroll-behavior:auto}}
+
+@media(max-width:760px){
+  section{padding:56px 0}
+  .nav-links{position:fixed; inset:62px 0 auto 0; flex-direction:column; gap:0; background:var(--bg);
+    border-bottom:1px solid var(--border); padding:8px 24px 18px; display:none}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:11px 0; width:100%; border-bottom:1px solid var(--border)}
+  .menu-toggle{display:inline-flex; all:unset; cursor:pointer; color:var(--text); font-size:1.4rem; padding:4px 6px}
+  .skill-grid{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .contact-card{padding:32px 20px}
+}
+</style>
+</head>
+<body>
+<a href="#top" style="position:absolute;left:-9999px">Skip to content</a>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">Christian&nbsp;<b>Tchuente</b></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#skills" data-i18n="nav.skills">Skills</a>
+      <a href="#projects" data-i18n="nav.projects">Projects</a>
+      <a href="#experience" data-i18n="nav.experience">Experience</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:12px">
+      <div class="langsw" role="group" aria-label="Language">
+        <button data-lang="en" aria-pressed="true">EN</button>
+        <button data-lang="fr" aria-pressed="false">FR</button>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">≡</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div class="reveal">
+      <span class="eyebrow" data-i18n="hero.eyebrow">Software Engineer</span>
+      <h1>Christian<br><span class="grad">Tchuente</span></h1>
+      <p class="role" data-i18n="hero.role">Software Engineer — Backend &amp; Full-Stack (.NET / C#)</p>
+      <p class="value" data-i18n="hero.value">I design and ship scalable backend systems and microservices in .NET and C# — from event-driven architectures to CI/CD — with distributed teams across three continents.</p>
+      <div class="loc"><span class="dot"></span><span data-i18n="hero.loc">Yaoundé, Cameroon · Open to international relocation</span></div>
+      <div class="cta-row">
+        <a class="btn primary" href="https://github.com/Armandcaft" target="_blank" rel="noopener" data-i18n="hero.cta.github">View GitHub</a>
+        <a class="btn ghost" id="cvLink" href="assets/Christian_Armand_Tchuente_CV_EN.pdf" target="_blank" rel="noopener" data-i18n="hero.cta.cv">Download CV</a>
+        <a class="btn ghost" href="#contact" data-i18n="hero.cta.contact">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="wrap reveal">
+    <span class="eyebrow" data-i18n="about.eyebrow">About</span>
+    <h2 class="sec" data-i18n="about.title">About</h2>
+    <p class="value" style="max-width:780px" data-i18n="about.body">I'm a software engineer with three years of experience building scalable web applications and backend services in C#/.NET and microservices architectures. I care about clean architecture, domain-driven design, and systems that stay maintainable as they grow. I've delivered production SaaS used by thousands of users and collaborated daily with distributed teams across Europe, the U.S., and Africa. I'm fluent in English and French, learning German — and open to relocating internationally.</p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="wrap reveal">
+    <span class="eyebrow" data-i18n="skills.eyebrow">Toolbox</span>
+    <h2 class="sec" data-i18n="skills.title">Skills</h2>
+    <div class="skill-grid" style="margin-top:26px">
+      <div class="skill-cat"><h3 data-i18n="skills.languages">Languages</h3><div class="chips">
+        <span class="chip">C#</span><span class="chip">Java</span><span class="chip">PHP</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">SQL</span><span class="chip">Bash</span></div></div>
+      <div class="skill-cat"><h3 data-i18n="skills.backend">Backend &amp; Frameworks</h3><div class="chips">
+        <span class="chip">.NET / ASP.NET Core</span><span class="chip">Spring Boot</span><span class="chip">Laravel</span><span class="chip">REST APIs</span></div></div>
+      <div class="skill-cat"><h3 data-i18n="skills.frontend">Frontend</h3><div class="chips">
+        <span class="chip">Angular</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Nx</span></div></div>
+      <div class="skill-cat"><h3 data-i18n="skills.architecture">Architecture</h3><div class="chips">
+        <span class="chip">Microservices</span><span class="chip">DDD</span><span class="chip">Clean Architecture</span><span class="chip">Event-Driven</span><span class="chip">CQRS</span><span class="chip">OAuth2/JWT</span></div></div>
+      <div class="skill-cat"><h3 data-i18n="skills.devops">DevOps &amp; Cloud</h3><div class="chips">
+        <span class="chip">Docker</span><span class="chip">GitLab CI/CD</span><span class="chip">Azure DevOps</span><span class="chip">Keycloak</span><span class="chip">RabbitMQ</span><span class="chip">SonarQube</span><span class="chip">Grafana</span></div></div>
+      <div class="skill-cat"><h3 data-i18n="skills.data">Databases</h3><div class="chips">
+        <span class="chip">PostgreSQL</span><span class="chip">SQL Server</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">Oracle</span></div></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="wrap">
+    <div class="reveal">
+      <span class="eyebrow" data-i18n="projects.eyebrow">Proof of work</span>
+      <h2 class="sec" data-i18n="projects.title">Selected Projects</h2>
+      <p class="sec-sub" data-i18n="projects.subtitle">A few systems I've designed and built.</p>
+    </div>
+    <div class="proj-grid">
+      <!-- ArbreGénéa (lead) -->
+      <article class="card lead reveal">
+        <h3><span data-i18n="proj.arbre.name">ArbreGénéa</span> <span class="badge-lead">Lead project</span></h3>
+        <p class="tag" data-i18n="proj.arbre.tag">Collaborative, multi-generational family tree platform</p>
+        <div class="pblock"><span class="pt" data-i18n="common.problem">Problem</span><p data-i18n="proj.arbre.problem">Family history gets lost across scattered memories and closed, single-user tools — with no shared, multilingual way for relatives to build one living tree together.</p></div>
+        <div class="pblock"><span class="pt" data-i18n="common.approach">Approach</span><p data-i18n="proj.arbre.approach">An event-driven modular monolith of eight DDD modules communicating through a transactional outbox over RabbitMQ/MassTransit; Clean Architecture + CQRS throughout, designed to split into microservices with minimal change.</p></div>
+        <div class="pblock"><span class="pt" data-i18n="common.result">Result</span><p data-i18n="proj.arbre.result">Eight modeled domains, 12-language localization (including RTL), real-time collaborative editing, RSVP events, WebRTC family calls, a PWA with web-push, full observability, and 43 documented ADRs.</p></div>
+        <div class="stack">
+          <span class="chip">.NET 9</span><span class="chip">C#</span><span class="chip">EF Core</span><span class="chip">PostgreSQL</span><span class="chip">RabbitMQ</span><span class="chip">MassTransit</span><span class="chip">Redis</span><span class="chip">Angular 21</span><span class="chip">Nx</span><span class="chip">Keycloak</span><span class="chip">Docker</span><span class="chip">OpenTelemetry</span>
         </div>
-        <!-- Spinner End -->
+        <div class="plinks"><span class="plink muted" data-i18n="common.privateRepo">Private repo — available on request</span></div>
+      </article>
+      <!-- FileStorageApi -->
+      <article class="card reveal">
+        <h3 data-i18n="proj.fs.name">FileStorageApi</h3>
+        <p class="tag" data-i18n="proj.fs.tag">Provider-agnostic file-storage microservice</p>
+        <div class="pblock"><span class="pt" data-i18n="common.problem">Problem</span><p data-i18n="proj.fs.problem">Apps get locked into a single storage provider; switching later means invasive rewrites of upload, download, and access-control logic.</p></div>
+        <div class="pblock"><span class="pt" data-i18n="common.approach">Approach</span><p data-i18n="proj.fs.approach">One unified .NET 9 REST API over MinIO, AWS S3, and Azure Blob — selectable purely by configuration — with Clean Architecture + CQRS, presigned URLs, event-raising copy, and background processing.</p></div>
+        <div class="pblock"><span class="pt" data-i18n="common.result">Result</span><p data-i18n="proj.fs.result">Swap storage providers by changing configuration, with zero changes to application code.</p></div>
+        <div class="stack"><span class="chip">.NET 9</span><span class="chip">C#</span><span class="chip">MinIO</span><span class="chip">AWS S3</span><span class="chip">Azure Blob</span><span class="chip">Hangfire</span><span class="chip">Docker</span></div>
+        <div class="plinks"><a class="plink" href="https://github.com/Armandcaft/FileStorageApi" target="_blank" rel="noopener" data-i18n="common.viewRepo">View repository</a></div>
+      </article>
+      <!-- Email -->
+      <article class="card reveal">
+        <h3 data-i18n="proj.email.name">CopilotHRM Email</h3>
+        <p class="tag" data-i18n="proj.email.tag">Templated, multi-language email microservice</p>
+        <div class="pblock"><span class="pt" data-i18n="common.problem">Problem</span><p data-i18n="proj.email.problem">Platforms need reliable, templated, multi-language transactional email — sent consistently and tracked, not hand-rolled per feature.</p></div>
+        <div class="pblock"><span class="pt" data-i18n="common.approach">Approach</span><p data-i18n="proj.email.approach">A standalone .NET service on the Mailgun API with a versioned template engine, per-language variants, attachments, request validation, and a full audit trail of every template version sent.</p></div>
+        <div class="pblock"><span class="pt" data-i18n="common.result">Result</span><p data-i18n="proj.email.result">Consistent, localized transactional email with complete version history across the platform.</p></div>
+        <div class="stack"><span class="chip">.NET</span><span class="chip">C#</span><span class="chip">Mailgun</span><span class="chip">MySQL</span><span class="chip">EF Core</span><span class="chip">FluentValidation</span><span class="chip">Serilog</span></div>
+        <div class="plinks"><span class="plink muted" data-i18n="common.privateRepo">Private repo — available on request</span></div>
+      </article>
+      <!-- SFO -->
+      <article class="card reveal">
+        <h3 data-i18n="proj.sfo.name">SFO — Scholarship Access</h3>
+        <p class="tag" data-i18n="proj.sfo.tag">Opportunity platform for African students</p>
+        <div class="pblock"><span class="pt" data-i18n="common.problem">Problem</span><p data-i18n="proj.sfo.problem">Talented students miss opportunities because scholarship and fellowship information is scattered and hard to reach.</p></div>
+        <div class="pblock"><span class="pt" data-i18n="common.approach">Approach</span><p data-i18n="proj.sfo.approach">A Laravel + React platform that surfaces scholarships and educational opportunities in one place, with the guidance candidates need to prepare and apply.</p></div>
+        <div class="pblock"><span class="pt" data-i18n="common.result">Result</span><p data-i18n="proj.sfo.result">Lowers the barrier to opportunity for candidates across Africa.</p></div>
+        <div class="stack"><span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">React</span><span class="chip">MySQL</span></div>
+        <div class="plinks"><span class="plink muted" data-i18n="common.privateRepo">Private repo — available on request</span></div>
+      </article>
+    </div>
 
-        <!-- Topbar Start -->
-        <div class="container-fluid bg-dark px-5 d-none d-lg-block">
-            <div class="row gx-0">
-                <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-                    <div class="d-inline-flex align-items-center" style="height: 45px;">
-                        <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>1.820 Street Yaoundé, Cameroon</small>
-                        <a href="tel://+237 222 21 48 14"><small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+237 222 21 48 14</small></a>
-                        <a href="mailto:giz-kamerun@giz.de"><small class="text-light"><i class="fa fa-envelope-open me-2"></i>giz-kamerun@giz.de</small></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center text-lg-end">
-                    <div class="d-inline-flex align-items-center" style="height: 45px;">
-                        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Topbar End -->
+    <!-- learning -->
+    <div class="learn reveal">
+      <div class="txt">
+        <h3 data-i18n="learning.title">Learning in the open</h3>
+        <p data-i18n="learning.body">Alongside bigger builds, I run small experiments to understand .NET from the inside — like a micro-benchmark comparing List&lt;T&gt;.Count (O(1) property) vs LINQ Count() vs full IEnumerable enumeration.</p>
+      </div>
+      <a class="btn ghost" href="https://github.com/Armandcaft/ListCountPerfComparison" target="_blank" rel="noopener" data-i18n="learning.link">ListCountPerfComparison →</a>
+    </div>
+  </section>
 
+  <!-- EXPERIENCE -->
+  <section id="experience" class="wrap reveal">
+    <span class="eyebrow" data-i18n="exp.eyebrow">Track record</span>
+    <h2 class="sec" data-i18n="exp.title">Experience</h2>
+    <p class="sec-sub" data-i18n="exp.subtitle">Full history and details in my CV.</p>
+    <ul class="tl">
+      <li>
+        <div class="role" data-i18n="exp.mboa.role">.NET / Angular Developer · MBOA Digital</div>
+        <div class="date" data-i18n="exp.mboa.date">Apr 2025 – Present</div>
+        <div class="desc" data-i18n="exp.mboa.desc">Maintain and extend production .NET/Angular apps serving 5,000+ users; Keycloak auth, GitLab CI/CD, distributed teams across Europe and the U.S.</div>
+      </li>
+      <li>
+        <div class="role" data-i18n="exp.abyster.role">.NET Software Engineer · AByster Consulting</div>
+        <div class="date" data-i18n="exp.abyster.date">Jul 2023 – Mar 2025</div>
+        <div class="desc" data-i18n="exp.abyster.desc">Built microservices for a case-management SaaS, an email-notification service, and a teleconsultation backend; Roslyn analyzers, SonarQube, distributed international team.</div>
+      </li>
+      <li>
+        <div class="role" data-i18n="exp.earlier.role">Earlier: Universal Software, and internships (2020–2022)</div>
+        <div class="desc" data-i18n="exp.earlier.desc">Full-stack roles across .NET, Java/Spring Boot, and Laravel — foundational experience built while completing my degree.</div>
+      </li>
+    </ul>
+    <div class="exp-cta"><a class="plink" id="cvLink2" href="assets/Christian_Armand_Tchuente_CV_EN.pdf" target="_blank" rel="noopener" data-i18n="exp.cta">See full CV →</a></div>
+  </section>
 
-        <!-- Navbar & Carousel Start -->
-        <div class="container-fluid position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-                <a href="index.html" class="navbar-brand p-0">
-                    <h1 class="m-0"><img style="width: 60px;" src="logo GIZ.jpg" alt=""><nav style="font-size: 30px; display: inline;">GIZ DevSTAND</nav></h1>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="stands.html" class="nav-item nav-link">Stands List</a>
-                        <a href="events.html" class="nav-item nav-link">Events</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <!-- <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blog</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                                <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                            </div>
-                        </div> -->
-                    </div>
-                    <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
-                    <nav class="btn btn-primary py-2 px-4 ms-3"><i class="fa fa-user"></i> <a href="login.html" class="text-white">Login</a> | <a href="register.html" class="text-white">Register</a></nav>
-                </div>
-            </nav>
+  <!-- CONTACT -->
+  <section id="contact" class="wrap reveal">
+    <div class="contact-card">
+      <span class="eyebrow" data-i18n="contact.eyebrow">Contact</span>
+      <h2 data-i18n="contact.title">Let's talk</h2>
+      <p data-i18n="contact.body">Open to backend and full-stack roles with international relocation. The fastest way to reach me is email.</p>
+      <a class="btn primary" href="mailto:fohomtchuente@gmail.com" data-i18n="contact.cta">Email me</a>
+      <div class="socials">
+        <a href="mailto:fohomtchuente@gmail.com">fohomtchuente@gmail.com</a>
+        <a href="https://www.linkedin.com/in/christian-armand-tchuente-2093461b6/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/Armandcaft" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://x.com/Armandcaft" target="_blank" rel="noopener">X</a>
+      </div>
+    </div>
+  </section>
+</main>
 
-            <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="w-100" src="img/carousel-1.jpg" alt="Image">
-                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                            <div class="p-3" style="max-width: 900px;">
-                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">Welcome</h5>
-                                <h1 class="display-1 text-white mb-md-4 animated zoomIn">Discover the various stands & Discover yourself !</h1>
-                                <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free Quote</a>
-                                <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100" src="img/carousel-2.jpg" alt="Image">
-                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                            <div class="p-3" style="max-width: 900px;">
-                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">Bienvenue</h5>
-                                <h1 class="display-1 text-white mb-md-4 animated zoomIn">Retrouvez vos stands & Retrouvez-vous !</h1>
-                                <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free Quote</a>
-                                <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100" src="img/carousel-1.jpg" alt="Image">
-                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                            <div class="p-3" style="max-width: 900px;">
-                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
-                                <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Digital Solution</h1>
-                                <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free Quote</a>
-                                <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-        <!-- Navbar & Carousel End -->
+<footer>
+  <div class="wrap foot">
+    <span data-i18n="footer.rights">© 2026 Christian Armand Fohom Tchuente.</span>
+    <span data-i18n="footer.built">Built with plain HTML &amp; CSS. Hosted on GitHub Pages.</span>
+  </div>
+</footer>
 
+<script>
+const I18N = {
+  "en": {
+    "nav.about":"About","nav.skills":"Skills","nav.projects":"Projects","nav.experience":"Experience","nav.contact":"Contact",
+    "hero.eyebrow":"Software Engineer",
+    "hero.role":"Software Engineer — Backend & Full-Stack (.NET / C#)",
+    "hero.value":"I design and ship scalable backend systems and microservices in .NET and C# — from event-driven architectures to CI/CD — with distributed teams across three continents.",
+    "hero.loc":"Yaoundé, Cameroon · Open to international relocation",
+    "hero.cta.github":"View GitHub","hero.cta.cv":"Download CV","hero.cta.contact":"Get in touch",
+    "about.eyebrow":"About","about.title":"About",
+    "about.body":"I'm a software engineer with three years of experience building scalable web applications and backend services in C#/.NET and microservices architectures. I care about clean architecture, domain-driven design, and systems that stay maintainable as they grow. I've delivered production SaaS used by thousands of users and collaborated daily with distributed teams across Europe, the U.S., and Africa. I'm fluent in English and French, learning German — and open to relocating internationally.",
+    "skills.eyebrow":"Toolbox","skills.title":"Skills",
+    "skills.languages":"Languages","skills.backend":"Backend & Frameworks","skills.frontend":"Frontend","skills.architecture":"Architecture","skills.devops":"DevOps & Cloud","skills.data":"Databases",
+    "projects.eyebrow":"Proof of work","projects.title":"Selected Projects","projects.subtitle":"A few systems I've designed and built.",
+    "common.problem":"Problem","common.approach":"Approach","common.result":"Result","common.standout":"Standout","common.stack":"Stack","common.viewRepo":"View repository","common.privateRepo":"Private repo — available on request","common.liveDemo":"Live demo",
+    "proj.arbre.name":"ArbreGénéa","proj.arbre.tag":"Collaborative, multi-generational family tree platform",
+    "proj.arbre.problem":"Family history gets lost across scattered memories and closed, single-user tools — with no shared, multilingual way for relatives to build one living tree together.",
+    "proj.arbre.approach":"An event-driven modular monolith of eight DDD modules communicating through a transactional outbox over RabbitMQ/MassTransit; Clean Architecture + CQRS throughout, designed to split into microservices with minimal change.",
+    "proj.arbre.result":"Eight modeled domains, 12-language localization (including RTL), real-time collaborative editing, RSVP events, WebRTC family calls, a PWA with web-push, full observability, and 43 documented ADRs.",
+    "proj.fs.name":"FileStorageApi","proj.fs.tag":"Provider-agnostic file-storage microservice",
+    "proj.fs.problem":"Apps get locked into a single storage provider; switching later means invasive rewrites of upload, download, and access-control logic.",
+    "proj.fs.approach":"One unified .NET 9 REST API over MinIO, AWS S3, and Azure Blob — selectable purely by configuration — with Clean Architecture + CQRS, presigned URLs, event-raising copy, and background processing.",
+    "proj.fs.result":"Swap storage providers by changing configuration, with zero changes to application code.",
+    "proj.email.name":"CopilotHRM Email","proj.email.tag":"Templated, multi-language email microservice",
+    "proj.email.problem":"Platforms need reliable, templated, multi-language transactional email — sent consistently and tracked, not hand-rolled per feature.",
+    "proj.email.approach":"A standalone .NET service on the Mailgun API with a versioned template engine, per-language variants, attachments, request validation, and a full audit trail of every template version sent.",
+    "proj.email.result":"Consistent, localized transactional email with complete version history across the platform.",
+    "proj.sfo.name":"SFO — Scholarship Access","proj.sfo.tag":"Opportunity platform for African students",
+    "proj.sfo.problem":"Talented students miss opportunities because scholarship and fellowship information is scattered and hard to reach.",
+    "proj.sfo.approach":"A Laravel + React platform that surfaces scholarships and educational opportunities in one place, with the guidance candidates need to prepare and apply.",
+    "proj.sfo.result":"Lowers the barrier to opportunity for candidates across Africa.",
+    "learning.title":"Learning in the open",
+    "learning.body":"Alongside bigger builds, I run small experiments to understand .NET from the inside — like a micro-benchmark comparing List<T>.Count (O(1) property) vs LINQ Count() vs full IEnumerable enumeration.",
+    "learning.link":"ListCountPerfComparison →",
+    "exp.eyebrow":"Track record","exp.title":"Experience","exp.subtitle":"Full history and details in my CV.",
+    "exp.mboa.role":".NET / Angular Developer · MBOA Digital","exp.mboa.date":"Apr 2025 – Present",
+    "exp.mboa.desc":"Maintain and extend production .NET/Angular apps serving 5,000+ users; Keycloak auth, GitLab CI/CD, distributed teams across Europe and the U.S.",
+    "exp.abyster.role":".NET Software Engineer · AByster Consulting","exp.abyster.date":"Jul 2023 – Mar 2025",
+    "exp.abyster.desc":"Built microservices for a case-management SaaS, an email-notification service, and a teleconsultation backend; Roslyn analyzers, SonarQube, distributed international team.",
+    "exp.earlier.role":"Earlier: Universal Software, and internships (2020–2022)",
+    "exp.earlier.desc":"Full-stack roles across .NET, Java/Spring Boot, and Laravel — foundational experience built while completing my degree.",
+    "exp.cta":"See full CV →",
+    "contact.eyebrow":"Contact","contact.title":"Let's talk",
+    "contact.body":"Open to backend and full-stack roles with international relocation. The fastest way to reach me is email.",
+    "contact.cta":"Email me",
+    "footer.rights":"© 2026 Christian Armand Fohom Tchuente.","footer.built":"Built with plain HTML & CSS. Hosted on GitHub Pages."
+  },
+  "fr": {
+    "nav.about":"À propos","nav.skills":"Compétences","nav.projects":"Projets","nav.experience":"Expérience","nav.contact":"Contact",
+    "hero.eyebrow":"Ingénieur Logiciel",
+    "hero.role":"Ingénieur Logiciel — Backend & Full-Stack (.NET / C#)",
+    "hero.value":"Je conçois et livre des systèmes backend et des microservices évolutifs en .NET et C# — des architectures événementielles à la CI/CD — avec des équipes distribuées sur trois continents.",
+    "hero.loc":"Yaoundé, Cameroun · Ouvert à la mobilité internationale",
+    "hero.cta.github":"Voir GitHub","hero.cta.cv":"Télécharger le CV","hero.cta.contact":"Me contacter",
+    "about.eyebrow":"À propos","about.title":"À propos",
+    "about.body":"Ingénieur logiciel avec trois ans d'expérience dans la création d'applications web évolutives et de services backend en C#/.NET et architectures microservices. J'attache de l'importance à la clean architecture, au domain-driven design et aux systèmes qui restent maintenables à mesure qu'ils grandissent. J'ai livré des SaaS en production utilisés par des milliers d'utilisateurs et collaboré au quotidien avec des équipes distribuées en Europe, aux États-Unis et en Afrique. Bilingue français/anglais, j'apprends l'allemand — et ouvert à la mobilité internationale.",
+    "skills.eyebrow":"Boîte à outils","skills.title":"Compétences",
+    "skills.languages":"Langages","skills.backend":"Backend & Frameworks","skills.frontend":"Frontend","skills.architecture":"Architecture","skills.devops":"DevOps & Cloud","skills.data":"Bases de données",
+    "projects.eyebrow":"Preuves à l'appui","projects.title":"Projets Sélectionnés","projects.subtitle":"Quelques systèmes que j'ai conçus et développés.",
+    "common.problem":"Problème","common.approach":"Approche","common.result":"Résultat","common.standout":"Point fort","common.stack":"Stack","common.viewRepo":"Voir le dépôt","common.privateRepo":"Dépôt privé — disponible sur demande","common.liveDemo":"Démo en ligne",
+    "proj.arbre.name":"ArbreGénéa","proj.arbre.tag":"Plateforme collaborative d'arbre généalogique multi-générationnel",
+    "proj.arbre.problem":"L'histoire familiale se perd entre souvenirs éparpillés et outils fermés mono-utilisateur — sans moyen partagé et multilingue de construire ensemble un arbre vivant.",
+    "proj.arbre.approach":"Un monolithe modulaire événementiel de huit modules DDD communiquant via un outbox transactionnel sur RabbitMQ/MassTransit ; Clean Architecture + CQRS partout, conçu pour se scinder en microservices avec un minimum de changements.",
+    "proj.arbre.result":"Huit domaines modélisés, localisation en 12 langues (dont RTL), édition collaborative en temps réel, événements avec RSVP, appels vidéo WebRTC, PWA avec notifications push, observabilité complète et 43 ADR documentés.",
+    "proj.fs.name":"FileStorageApi","proj.fs.tag":"Microservice de stockage de fichiers agnostique au fournisseur",
+    "proj.fs.problem":"Les applications se retrouvent liées à un seul fournisseur de stockage ; en changer plus tard implique de lourdes réécritures de la logique d'upload, de download et de contrôle d'accès.",
+    "proj.fs.approach":"Une seule API REST .NET 9 au-dessus de MinIO, AWS S3 et Azure Blob — sélectionnable par simple configuration — avec Clean Architecture + CQRS, URLs présignées, copie émettrice d'événements et traitement en arrière-plan.",
+    "proj.fs.result":"Changer de fournisseur de stockage par configuration, sans aucune modification du code applicatif.",
+    "proj.email.name":"CopilotHRM Email","proj.email.tag":"Microservice d'e-mails templatés et multilingues",
+    "proj.email.problem":"Les plateformes ont besoin d'e-mails transactionnels fiables, templatés et multilingues — envoyés de façon cohérente et tracés, pas bricolés fonctionnalité par fonctionnalité.",
+    "proj.email.approach":"Un service .NET autonome sur l'API Mailgun avec moteur de templates versionnés, variantes par langue, pièces jointes, validation des requêtes et journal d'audit complet de chaque version envoyée.",
+    "proj.email.result":"Des e-mails transactionnels localisés et cohérents, avec un historique de versions complet.",
+    "proj.sfo.name":"SFO — Accès aux bourses","proj.sfo.tag":"Plateforme d'opportunités pour les étudiants africains",
+    "proj.sfo.problem":"Des étudiants talentueux manquent des opportunités car l'information sur les bourses est éparpillée et difficile d'accès.",
+    "proj.sfo.approach":"Une plateforme Laravel + React qui regroupe bourses et opportunités éducatives en un seul endroit, avec l'accompagnement nécessaire pour préparer et postuler.",
+    "proj.sfo.result":"Abaisse la barrière d'accès aux opportunités pour les candidats à travers l'Afrique.",
+    "learning.title":"Apprendre au grand jour",
+    "learning.body":"En parallèle des gros projets, je mène de petites expériences pour comprendre .NET de l'intérieur — comme un micro-benchmark comparant List<T>.Count (propriété O(1)) vs LINQ Count() vs énumération complète d'IEnumerable.",
+    "learning.link":"ListCountPerfComparison →",
+    "exp.eyebrow":"Parcours","exp.title":"Expérience","exp.subtitle":"Historique complet et détails dans mon CV.",
+    "exp.mboa.role":"Développeur .NET / Angular · MBOA Digital","exp.mboa.date":"Avr. 2025 – Présent",
+    "exp.mboa.desc":"Maintien et évolution d'applications .NET/Angular en production servant plus de 5 000 utilisateurs ; auth Keycloak, CI/CD GitLab, équipes distribuées en Europe et aux États-Unis.",
+    "exp.abyster.role":"Ingénieur Logiciel .NET · AByster Consulting","exp.abyster.date":"Juil. 2023 – Mars 2025",
+    "exp.abyster.desc":"Microservices pour un SaaS de gestion de dossiers, un service de notification e-mail et un backend de téléconsultation ; analyseurs Roslyn, SonarQube, équipe internationale distribuée.",
+    "exp.earlier.role":"Avant : Universal Software et stages (2020–2022)",
+    "exp.earlier.desc":"Rôles full-stack en .NET, Java/Spring Boot et Laravel — expérience fondatrice acquise pendant mes études.",
+    "exp.cta":"Voir le CV complet →",
+    "contact.eyebrow":"Contact","contact.title":"Discutons",
+    "contact.body":"Ouvert aux postes backend et full-stack avec mobilité internationale. Le plus rapide pour me joindre : l'e-mail.",
+    "contact.cta":"M'écrire",
+    "footer.rights":"© 2026 Christian Armand Fohom Tchuente.","footer.built":"Conçu en HTML & CSS. Hébergé sur GitHub Pages."
+  }
+};
 
-        <!-- Full Screen Search Start -->
-        <div class="modal fade" id="searchModal" tabindex="-1">
-            <div class="modal-dialog modal-fullscreen">
-                <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
-                    <div class="modal-header border-0">
-                        <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body d-flex align-items-center justify-content-center">
-                        <div class="input-group" style="max-width: 600px;">
-                            <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
-                            <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Full Screen Search End -->
+function applyLang(lang){
+  if(!I18N[lang]) lang = "en";
+  const dict = I18N[lang];
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k = el.getAttribute("data-i18n");
+    if(dict[k] != null) el.textContent = dict[k];
+  });
+  document.documentElement.lang = lang;
+  document.querySelectorAll(".langsw button").forEach(b=>{
+    b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+  });
+  const cv = lang === "fr" ? "assets/Christian_Armand_Tchuente_CV_FR.pdf" : "assets/Christian_Armand_Tchuente_CV_EN.pdf";
+  ["cvLink","cvLink2"].forEach(id=>{ const el=document.getElementById(id); if(el) el.setAttribute("href", cv); });
+  try{ localStorage.setItem("lang", lang); }catch(e){}
+}
 
-
-        <!-- Facts Start -->
-        <div class="container-fluid facts py-5 pt-lg-0">
-            <div class="container py-5 pt-lg-0">
-                <div class="row gx-0">
-                    <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
-                        <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
-                            <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
-                                <i class="fa fa-users text-primary"></i>
-                            </div>
-                            <div class="ps-4">
-                                <h5 class="text-white mb-0">Participants</h5>
-                                <h1 class="text-white mb-0" data-toggle="counter-up">65</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
-                        <div class="bg-light shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
-                            <div class="bg-primary d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
-                                <i class="fa fa-check text-white"></i>
-                            </div>
-                            <div class="ps-4">
-                                <h5 class="text-primary mb-0">Stands</h5>
-                                <h1 class="mb-0" data-toggle="counter-up">15</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
-                        <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
-                            <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
-                                <i class="fa fa-award text-primary"></i>
-                            </div>
-                            <div class="ps-4">
-                                <h5 class="text-white mb-0">Session</h5>
-                                <h1 class="text-white mb-0">Nov 2022</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Facts Start -->
-
-        <!-- Map Features Start -->
-        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container py-5">
-                <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                    <h5 class="fw-bold text-primary text-uppercase">Localization</h5>
-                    <h1 class="mb-0">Google maps location at Yaounde, Cameroun</h1>
-                </div>
-                <div class="row g-5">
-                    <Map>Map</Map>
-                    <img src="img/GIZ/1.jpg" alt="">
-                    <img src="img/GIZ/2.jpg" alt="">
-                    <img src="img/GIZ/3.jpg" alt="">
-                    <img src="img/GIZ/4.jpg" alt="">
-                    <img src="img/GIZ/4.2.jpg" alt="">
-                </div>
-            </div>
-        </div>
-        <!-- Map Features Start -->
-
-        <!-- Stands Shuffle Start -->
-        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container py-5">
-                <div class="section-title text-center position-relative pb-3 mb-4 mx-auto" style="max-width: 600px;">
-                    <h5 class="fw-bold text-primary text-uppercase">Stands</h5>
-                    <h1 class="mb-0">Discover the various stands already hosting</h1>
-                </div>
-                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="service-item testimonial-item bg-light my-4">
-                        <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                            <img class="img-fluid rounded" src="img/testimonial-1.jpg" style="width: 60px; height: 60px;" >
-                            <div class="ps-4">
-                                <h4 class="text-primary mb-1">Stand title 1</h4>
-                                <small class="text-uppercase">Field | time</small>
-                            </div>
-                        </div>
-                        <div class="pt-4 pb-5 px-5">
-                            Description of stand 1
-                        </div>
-                        <a class="btn btn-lg btn-primary rounded" href="detail-stand.html">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="service-item testimonial-item bg-light my-4">
-                        <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                            <img class="img-fluid rounded" src="img/testimonial-2.jpg" style="width: 60px; height: 60px;" >
-                            <div class="ps-4">
-                                <h4 class="text-primary mb-1">Stand title 2</h4>
-                                <small class="text-uppercase">Field | time</small>
-                            </div>
-                        </div>
-                        <div class="pt-4 pb-5 px-5">
-                            Description of stand 2
-                        </div>
-                        <a class="btn btn-lg btn-primary rounded" href="detail-stand.html">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="service-item testimonial-item bg-light my-4">
-                        <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                            <img class="img-fluid rounded" src="img/testimonial-3.jpg" style="width: 60px; height: 60px;" >
-                            <div class="ps-4">
-                                <h4 class="text-primary mb-1">Stand title 3</h4>
-                                <small class="text-uppercase">Field | time</small>
-                            </div>
-                        </div>
-                        <div class="pt-4 pb-5 px-5">
-                            Description of stand 3
-                        </div>
-                        <a class="btn btn-lg btn-primary rounded" href="detail-stand.html">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="container py-5">
-                    <div class=" text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                        <a href="service.html" style="text-decoration: underline;">
-                            <h5 class="btn btn-lg fw-bold text-primary text-uppercase">View All Stands <i class="rounded bi bi-arrow-right"></i></h5>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Stands Shuffle End -->
-
-        <!-- Stand Start -->
-        <!-- <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container py-5">
-                <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                    <h5 class="fw-bold text-primary text-uppercase">Our Services</h5>
-                    <h1 class="mb-0">Custom IT Solutions for Your Successful Business</h1>
-                </div>
-                <div class="row g-5">
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                        <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                            <div class="service-icon">
-                                <i class="fa fa-shield-alt text-white"></i>
-                            </div>
-                            <h4 class="mb-3">Cyber Security</h4>
-                            <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
-                            <a class="btn btn-lg btn-primary rounded" href="">
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                        <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                            <div class="service-icon">
-                                <i class="fa fa-chart-pie text-white"></i>
-                            </div>
-                            <h4 class="mb-3">Data Analytics</h4>
-                            <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
-                            <a class="btn btn-lg btn-primary rounded" href="">
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
-                        <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                            <div class="service-icon">
-                                <i class="fa fa-code text-white"></i>
-                            </div>
-                            <h4 class="mb-3">Web Development</h4>
-                            <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
-                            <a class="btn btn-lg btn-primary rounded" href="">
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                        <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                            <div class="service-icon">
-                                <i class="fab fa-android text-white"></i>
-                            </div>
-                            <h4 class="mb-3">Apps Development</h4>
-                            <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
-                            <a class="btn btn-lg btn-primary rounded" href="">
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                        <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                            <div class="service-icon">
-                                <i class="fa fa-search text-white"></i>
-                            </div>
-                            <h4 class="mb-3">SEO Optimization</h4>
-                            <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
-                            <a class="btn btn-lg btn-primary rounded" href="">
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
-                        <div class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
-                            <h3 class="text-white mb-3">Call Us For Quote</h3>
-                            <p class="text-white mb-3">Clita ipsum magna kasd rebum at ipsum amet dolor justo dolor est magna stet eirmod</p>
-                            <h2 class="text-white mb-0">+012 345 6789</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Stand End -->
-
-
-        <!-- Pricing Plan Start -->
-        <!-- <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container py-5">
-                <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                    <h5 class="fw-bold text-primary text-uppercase">Pricing Plans</h5>
-                    <h1 class="mb-0">We are Offering Competitive Prices for Our Clients</h1>
-                </div>
-                <div class="row g-0">
-                    <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
-                        <div class="bg-light rounded">
-                            <div class="border-bottom py-4 px-5 mb-4">
-                                <h4 class="text-primary mb-1">Basic Plan</h4>
-                                <small class="text-uppercase">For Small Size Business</small>
-                            </div>
-                            <div class="p-5 pt-0">
-                                <h1 class="display-5 mb-3">
-                                    <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>49.00<small
-                                        class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                                </h1>
-                                <div class="d-flex justify-content-between mb-3"><span>HTML5 & CSS3</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <div class="d-flex justify-content-between mb-3"><span>Bootstrap v5</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <div class="d-flex justify-content-between mb-3"><span>Responsive Layout</span><i class="fa fa-times text-danger pt-1"></i></div>
-                                <div class="d-flex justify-content-between mb-2"><span>Cross-browser Support</span><i class="fa fa-times text-danger pt-1"></i></div>
-                                <a href="" class="btn btn-primary py-2 px-4 mt-4">Order Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
-                        <div class="bg-white rounded shadow position-relative" style="z-index: 1;">
-                            <div class="border-bottom py-4 px-5 mb-4">
-                                <h4 class="text-primary mb-1">Standard Plan</h4>
-                                <small class="text-uppercase">For Medium Size Business</small>
-                            </div>
-                            <div class="p-5 pt-0">
-                                <h1 class="display-5 mb-3">
-                                    <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>99.00<small
-                                        class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                                </h1>
-                                <div class="d-flex justify-content-between mb-3"><span>HTML5 & CSS3</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <div class="d-flex justify-content-between mb-3"><span>Bootstrap v5</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <div class="d-flex justify-content-between mb-3"><span>Responsive Layout</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <div class="d-flex justify-content-between mb-2"><span>Cross-browser Support</span><i class="fa fa-times text-danger pt-1"></i></div>
-                                <a href="" class="btn btn-primary py-2 px-4 mt-4">Order Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
-                        <div class="bg-light rounded">
-                            <div class="border-bottom py-4 px-5 mb-4">
-                                <h4 class="text-primary mb-1">Advanced Plan</h4>
-                                <small class="text-uppercase">For Large Size Business</small>
-                            </div>
-                            <div class="p-5 pt-0">
-                                <h1 class="display-5 mb-3">
-                                    <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>149.00<small
-                                        class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                                </h1>
-                                <div class="d-flex justify-content-between mb-3"><span>HTML5 & CSS3</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <div class="d-flex justify-content-between mb-3"><span>Bootstrap v5</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <div class="d-flex justify-content-between mb-3"><span>Responsive Layout</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <div class="d-flex justify-content-between mb-2"><span>Cross-browser Support</span><i class="fa fa-check text-primary pt-1"></i></div>
-                                <a href="" class="btn btn-primary py-2 px-4 mt-4">Order Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Pricing Plan End -->
-
-
-        <!-- Quote Start -->
-        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-lg-7">
-                        <div class="section-title position-relative pb-3 mb-5">
-                            <h5 class="fw-bold text-primary text-uppercase">Request A Stand or Something</h5>
-                            <h1 class="mb-0">Have a Request? Please Feel Free to Contact Us</h1>
-                        </div>
-                        <div class="row gx-3">
-                            <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                                <h5 class="mb-4"><i class="fa fa-reply text-primary me-3"></i>We reply within brief delays</h5>
-                            </div>
-                            <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-                                <h5 class="mb-4"><i class="fa fa-phone-alt text-primary me-3"></i>24 hrs telephone support</h5>
-                            </div>
-                        </div>
-                        <p class="mb-4">We read and listen to the various, thus every inquiry and assure you a solution based on your needs where applicable. <br> Don't hesitate, let's hook up!</p>
-                        <div class="d-flex align-items-center mt-2 wow zoomIn" data-wow-delay="0.6s">
-                            <a href="tel://+237 222 21 48 14">
-                                <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
-                                    <i class="fa fa-phone-alt text-white"></i>
-                                </div>
-                            </a>
-                            <div class="ps-4">
-                                <h5 class="mb-2">Call to ask any question</h5>
-                                <a href="tel://+237 222 21 48 14"><h4 class="text-primary mb-0">+237 222 21 48 14</h4></a>
-                                <!-- <a href="tel://+237 222 21 23 87"><h4 class="text-primary mb-0">+237 222 21 23 87</h4></a> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
-                            <form>
-                                <div class="row g-3">
-                                    <div class="col-xl-12">
-                                        <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
-                                    </div>
-                                    <div class="col-12">
-                                        <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;">
-                                    </div>
-                                    <div class="col-12">
-                                        <select class="form-select bg-light border-0" style="height: 55px;">
-                                            <option selected>Select A Service</option>
-                                            <option value="1">Service 1</option>
-                                            <option value="2">Service 2</option>
-                                            <option value="3">Service 3</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-12">
-                                        <textarea class="form-control bg-light border-0" rows="3" placeholder="Message"></textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn btn-dark w-100 py-3" type="submit">Send Request <i class="fa fa-envelope me-2"></i></button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Quote End -->
-
-
-        <!-- Testimonial Start -->
-        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container py-5">
-                <div class="section-title text-center position-relative pb-3 mb-4 mx-auto" style="max-width: 600px;">
-                    <h5 class="fw-bold text-primary text-uppercase">Testimonial / Comments</h5>
-                    <h1 class="mb-0">Get some feedbacks from the various stands</h1>
-                </div>
-                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="testimonial-item bg-light my-4">
-                        <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                            <img class="img-fluid rounded" src="img/testimonial-1.jpg" style="width: 60px; height: 60px;" >
-                            <div class="ps-4">
-                                <h4 class="text-primary mb-1">Partcipant name</h4>
-                                <small class="text-uppercase">Profession</small>
-                            </div>
-                        </div>
-                        <div class="pt-4 pb-5 px-5">
-                            Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light my-4">
-                        <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                            <img class="img-fluid rounded" src="img/testimonial-2.jpg" style="width: 60px; height: 60px;" >
-                            <div class="ps-4">
-                                <h4 class="text-primary mb-1">Partcipant name</h4>
-                                <small class="text-uppercase">Profession</small>
-                            </div>
-                        </div>
-                        <div class="pt-4 pb-5 px-5">
-                            Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light my-4">
-                        <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                            <img class="img-fluid rounded" src="img/testimonial-3.jpg" style="width: 60px; height: 60px;" >
-                            <div class="ps-4">
-                                <h4 class="text-primary mb-1">Partcipant name</h4>
-                                <small class="text-uppercase">Profession</small>
-                            </div>
-                        </div>
-                        <div class="pt-4 pb-5 px-5">
-                            Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light my-4">
-                        <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                            <img class="img-fluid rounded" src="img/testimonial-4.jpg" style="width: 60px; height: 60px;" >
-                            <div class="ps-4">
-                                <h4 class="text-primary mb-1">Partcipant name</h4>
-                                <small class="text-uppercase">Profession</small>
-                            </div>
-                        </div>
-                        <div class="pt-4 pb-5 px-5">
-                            Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Testimonial End -->
-
-
-        <!-- Team Start -->
-        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container py-5">
-                <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                    <h5 class="fw-bold text-primary text-uppercase">Team Members</h5>
-                    <h1 class="mb-0">Professional Stuffs Ready to Help Your Business</h1>
-                </div>
-                <div class="row g-5">
-                    <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
-                        <div class="team-item bg-light rounded overflow-hidden">
-                            <div class="team-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/team-1.jpg" alt="">
-                                <div class="team-social">
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                                </div>
-                            </div>
-                            <div class="text-center py-4">
-                                <h4 class="text-primary">Full Name</h4>
-                                <p class="text-uppercase m-0">Designation</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
-                        <div class="team-item bg-light rounded overflow-hidden">
-                            <div class="team-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/team-2.jpg" alt="">
-                                <div class="team-social">
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                                </div>
-                            </div>
-                            <div class="text-center py-4">
-                                <h4 class="text-primary">Full Name</h4>
-                                <p class="text-uppercase m-0">Designation</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
-                        <div class="team-item bg-light rounded overflow-hidden">
-                            <div class="team-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/team-3.jpg" alt="">
-                                <div class="team-social">
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                                </div>
-                            </div>
-                            <div class="text-center py-4">
-                                <h4 class="text-primary">Full Name</h4>
-                                <p class="text-uppercase m-0">Designation</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Team End -->
-
-
-        <!-- Event Start -->
-        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container py-5">
-                <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                    <h5 class="fw-bold text-primary text-uppercase">Previous Events</h5>
-                    <h1 class="mb-0">View The Latest and Past Events We've Hosted</h1>
-                </div>
-                <div class="row g-5">
-                    <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
-                        <div class="blog-item bg-light rounded overflow-hidden">
-                            <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-1.jpg" alt="">
-                                <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">Session 2021</a>
-                            </div>
-                            <div class="p-4">
-                                <div class="d-flex mb-3">
-                                    <small class="me-3"><i class="far fa-map text-primary me-2"></i>Location</small>
-                                    <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2021</small>
-                                </div>
-                                <h4 class="mb-3">Event 1</h4>
-                                <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
-                                <a class="text-uppercase" href="detail-event.html">Read More <i class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
-                        <div class="blog-item bg-light rounded overflow-hidden">
-                            <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-2.jpg" alt="">
-                                <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">Session 2020</a>
-                            </div>
-                            <div class="p-4">
-                                <div class="d-flex mb-3">
-                                    <small class="me-3"><i class="far fa-map text-primary me-2"></i>Location</small>
-                                    <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2020</small>
-                                </div>
-                                <h4 class="mb-3">Event 2</h4>
-                                <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
-                                <a class="text-uppercase" href="detail-event.html">Read More <i class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
-                        <div class="blog-item bg-light rounded overflow-hidden">
-                            <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-3.jpg" alt="">
-                                <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">Session 2019</a>
-                            </div>
-                            <div class="p-4">
-                                <div class="d-flex mb-3">
-                                    <small class="me-3"><i class="far fa-map text-primary me-2"></i>Location</small>
-                                    <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2019</small>
-                                </div>
-                                <h4 class="mb-3">Event 3</h4>
-                                <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
-                                <a class="text-uppercase" href="detail-event.html">Read More <i class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container py-5">
-                    <div class=" text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                        <a href="events.html" style="text-decoration: underline;">
-                            <h5 class="btn btn-lg fw-bold text-primary text-uppercase">View All Events <i class="rounded bi bi-arrow-right"></i></h5>                    
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Event Start -->
-
-
-        <!-- Vendor Start -->
-        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container py-5 mb-5">
-                <div class="bg-white">
-                    <div class="owl-carousel vendor-carousel">
-                        <img src="img/vendor-1.jpg" alt="">
-                        <img src="img/vendor-2.jpg" alt="">
-                        <img src="img/vendor-3.jpg" alt="">
-                        <img src="img/vendor-4.jpg" alt="">
-                        <img src="img/vendor-5.jpg" alt="">
-                        <img src="img/vendor-6.jpg" alt="">
-                        <img src="img/vendor-7.jpg" alt="">
-                        <img src="img/vendor-8.jpg" alt="">
-                        <img src="img/vendor-9.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Vendor End -->
-        
-
-        <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container">
-                <div class="row gx-5">
-                    <div class="col-lg-4 col-md-6 footer-about">
-                        <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
-                            <a href="index.html" class="navbar-brand">
-                                <h1 class="m-0 text-white"><img style="width: 60px;" src="logo GIZ.jpg" alt="">GIZ DevStand</h1>
-                            </a>
-                            <p class="mt-3 mb-4">Desiring to get informed and know more about our next launch ? Hurry, let's connect !</p>
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                                    <button class="btn btn-dark">Sign Up</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-6">
-                        <div class="row gx-5">
-                            <div class="col-lg-4 col-md-12 pt-5 mb-5">
-                                <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                                    <h3 class="text-light mb-0">Get In Touch</h3>
-                                </div>
-                                <div class="d-flex mb-2">
-                                    <i class="bi bi-geo-alt text-primary me-2"></i>
-                                    <p class="mb-0">1.820 Street Yaoundé, Cameroon</p>
-                                </div>
-                                <a href="mailto:giz-kamerun@giz.de" style="color:aliceblue;">
-                                    <div class="d-flex mb-2">
-                                        <i class="bi bi-envelope-open text-primary me-2"></i>
-                                        <p class="mb-0">giz-kamerun@giz.de</p>
-                                    </div>
-                                </a>
-                                <a href="tel://+237 222 21 23 87" style="color:aliceblue;">
-                                    <div class="d-flex mb-2">
-                                        <i class="bi bi-telephone text-primary me-2"></i>
-                                        <p class="mb-0" style="display: inline;">+237 222 21 23 87</p></a>
-                                    </div>
-                                </a>
-                                <a href="tel://+237 222 21 48 14" style="color:aliceblue;">
-                                    <div class="d-flex mb-2">
-                                        <i class="bi bi-telephone text-primary me-2"></i>
-                                        <p class="mb-0" style="display: inline;">+237 222 21 48 14</p>
-                                    </div>
-                                </a>
-                                <div class="d-flex mt-4">
-                                    <a class="btn btn-primary btn-square me-2" href="https://twitter.com/giz_gmbh"><i class="fab fa-twitter fw-normal"></i></a>
-                                    <a class="btn btn-primary btn-square me-2" href="https://www.linkedin.com/company/gizgmbh/"><i class="fab fa-linkedin-in fw-normal"></i></a>
-                                    <a class="btn btn-primary btn-square me-2" href="https://www.youtube.com/user/GIZonlineTV"><i class="fab fa-youtube fw-normal" style="/*color: red;*/"></i></a>
-                                    <a class="btn btn-primary btn-square" href="https://www.giz.de/en/mediacenter/115.html"><i class="fab fa-instagram fw-normal"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                                <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                                    <h3 class="text-light mb-0">Quick Links</h3>
-                                </div>
-                                <div class="link-animated d-flex flex-column justify-content-start">
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                                    <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                                <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                                    <h3 class="text-light mb-0">Popular Links</h3>
-                                </div>
-                                <div class="link-animated d-flex flex-column justify-content-start">
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                                    <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid text-white" style="background: #061429;">
-            <div class="container text-center">
-                <div class="row justify-content-end">
-                    <div class="col-lg-8 col-md-6">
-                        <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                            <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Your Site Name</a>. All Rights Reserved. 
-                            
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">HTML Codex</a></p>
-                             Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer End -->
-
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="js/jquery.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="lib/wow/wow.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/counterup/counterup.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
-    </body>
-
+(function init(){
+  let saved = null;
+  try{ saved = localStorage.getItem("lang"); }catch(e){}
+  const initial = saved || ((navigator.language||"en").toLowerCase().startsWith("fr") ? "fr" : "en");
+  applyLang(initial);
+  document.querySelectorAll(".langsw button").forEach(b=>{
+    b.addEventListener("click", ()=>applyLang(b.dataset.lang));
+  });
+  const mt = document.getElementById("menuToggle"), nl = document.getElementById("navLinks");
+  if(mt && nl){
+    mt.addEventListener("click", ()=>nl.classList.toggle("open"));
+    nl.querySelectorAll("a").forEach(a=>a.addEventListener("click", ()=>nl.classList.remove("open")));
+  }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, {threshold:0.12});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+})();
+</script>
+</body>
 </html>
