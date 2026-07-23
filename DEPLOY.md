@@ -59,7 +59,7 @@ Give it ~1 minute, then visit **https://armandcaft.github.io**.
    <div class="plinks"><a class="plink" href="https://github.com/Armandcaft/ArbreGenea" target="_blank" rel="noopener" data-i18n="common.viewRepo">View repository</a></div>
    ```
 
-   (Same swap works for the CopilotHRM Email and SFO cards if/when you make those public.)
+   (Same swap works for the Email Microservice and SFO cards if/when you make those public.)
 
 2. **Add the READMEs** — commit each provided README as `README.md` at the root of its repo (FileStorageApi, ArbreGénéa, copilothrm-email).
 
