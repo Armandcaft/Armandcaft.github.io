@@ -242,9 +242,9 @@ footer{border-top:1px solid var(--border); padding:26px 0; color:var(--muted); f
         <h3 data-i18n="proj.fs.name">FileStorageApi</h3>
         <p class="tag" data-i18n="proj.fs.tag">Provider-agnostic file-storage microservice</p>
         <div class="pblock"><span class="pt" data-i18n="common.problem">Problem</span><p data-i18n="proj.fs.problem">Apps get locked into a single storage provider; switching later means invasive rewrites of upload, download, and access-control logic.</p></div>
-        <div class="pblock"><span class="pt" data-i18n="common.approach">Approach</span><p data-i18n="proj.fs.approach">One unified .NET 9 REST API over MinIO, AWS S3, and Azure Blob — selectable purely by configuration — with Clean Architecture + CQRS, presigned URLs, event-raising copy, and background processing.</p></div>
+        <div class="pblock"><span class="pt" data-i18n="common.approach">Approach</span><p data-i18n="proj.fs.approach">One unified .NET 9 REST API over MinIO, AWS S3, and any S3-compatible store (e.g. RustFS) — selectable purely by configuration — with Clean Architecture + CQRS, presigned URLs, event-raising copy, and background processing.</p></div>
         <div class="pblock"><span class="pt" data-i18n="common.result">Result</span><p data-i18n="proj.fs.result">Swap storage providers by changing configuration, with zero changes to application code.</p></div>
-        <div class="stack"><span class="chip">.NET 9</span><span class="chip">C#</span><span class="chip">MinIO</span><span class="chip">AWS S3</span><span class="chip">Azure Blob</span><span class="chip">Hangfire</span><span class="chip">Docker</span></div>
+        <div class="stack"><span class="chip">.NET 9</span><span class="chip">C#</span><span class="chip">MinIO</span><span class="chip">AWS S3</span><span class="chip">RustFS</span><span class="chip">Hangfire</span><span class="chip">Docker</span></div>
         <div class="plinks"><a class="plink" href="https://github.com/Armandcaft/FileStorageApi" target="_blank" rel="noopener" data-i18n="common.viewRepo">View repository</a></div>
       </article>
       <!-- Email -->
@@ -349,7 +349,7 @@ const I18N = {
     "proj.arbre.result":"Eight modeled domains, 12-language localization (including RTL), real-time collaborative editing, RSVP events, WebRTC family calls, a PWA with web-push, full observability, and 43 documented ADRs.",
     "proj.fs.name":"FileStorageApi","proj.fs.tag":"Provider-agnostic file-storage microservice",
     "proj.fs.problem":"Apps get locked into a single storage provider; switching later means invasive rewrites of upload, download, and access-control logic.",
-    "proj.fs.approach":"One unified .NET 9 REST API over MinIO, AWS S3, and Azure Blob — selectable purely by configuration — with Clean Architecture + CQRS, presigned URLs, event-raising copy, and background processing.",
+    "proj.fs.approach":"One unified .NET 9 REST API over MinIO, AWS S3, and any S3-compatible store (e.g. RustFS) — selectable purely by configuration — with Clean Architecture + CQRS, presigned URLs, event-raising copy, and background processing.",
     "proj.fs.result":"Swap storage providers by changing configuration, with zero changes to application code.",
     "proj.email.name":"Email Microservice","proj.email.tag":"Templated, multi-language email microservice",
     "proj.email.problem":"Platforms need reliable, templated, multi-language transactional email — sent consistently and tracked, not hand-rolled per feature.",
@@ -394,7 +394,7 @@ const I18N = {
     "proj.arbre.result":"Huit domaines modélisés, localisation en 12 langues (dont RTL), édition collaborative en temps réel, événements avec RSVP, appels vidéo WebRTC, PWA avec notifications push, observabilité complète et 43 ADR documentés.",
     "proj.fs.name":"FileStorageApi","proj.fs.tag":"Microservice de stockage de fichiers agnostique au fournisseur",
     "proj.fs.problem":"Les applications se retrouvent liées à un seul fournisseur de stockage ; en changer plus tard implique de lourdes réécritures de la logique d'upload, de download et de contrôle d'accès.",
-    "proj.fs.approach":"Une seule API REST .NET 9 au-dessus de MinIO, AWS S3 et Azure Blob — sélectionnable par simple configuration — avec Clean Architecture + CQRS, URLs présignées, copie émettrice d'événements et traitement en arrière-plan.",
+    "proj.fs.approach":"Une seule API REST .NET 9 au-dessus de MinIO, AWS S3 et tout stockage compatible S3 (ex. RustFS) — sélectionnable par simple configuration — avec Clean Architecture + CQRS, URLs présignées, copie émettrice d'événements et traitement en arrière-plan.",
     "proj.fs.result":"Changer de fournisseur de stockage par configuration, sans aucune modification du code applicatif.",
     "proj.email.name":"Email Microservice","proj.email.tag":"Microservice d'e-mails templatés et multilingues",
     "proj.email.problem":"Les plateformes ont besoin d'e-mails transactionnels fiables, templatés et multilingues — envoyés de façon cohérente et tracés, pas bricolés fonctionnalité par fonctionnalité.",
